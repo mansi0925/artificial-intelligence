@@ -1,0 +1,149 @@
+Step 1 : Create 3 tables mentioned in the Food Panda Case Study Document.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+TABLE 1 (Orders Table)
+- Table creation prompt : 
+	Write a simple SQL Query to create Orders table using following specification:
+	Orders Table:
+	order_id
+	customer_id
+	menu_item_id
+	order_timestamp
+	delivery_partner_id
+	order status
+	delivery_timestamp
+	complaint_or_compliment_message 
+	Payment_or_cancellation_issue
+	restaurant_id
+
+Result :
+	CREATE TABLE Orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    menu_item_id INT NOT NULL,
+    order_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    delivery_partner_id INT,
+    order_status ENUM('Pending', 'Preparing', 'Out for Delivery', 'Delivered', 'Cancelled') NOT NULL,
+    delivery_timestamp DATETIME NULL,
+    complaint_or_compliment_message TEXT,
+    payment_or_cancellation_issue TEXT,
+    restaurant_id INT NOT NULL
+	);
+	
+- Prompt for inserting dummy values into the Orders Table:
+	Insert 10 dummy values into the Orders table created above.
+	
+Result :
+	INSERT INTO Orders (customer_id, menu_item_id, order_timestamp, delivery_partner_id, order_status, delivery_timestamp, complaint_or_compliment_message, payment_or_cancellation_issue, restaurant_id)
+	VALUES 
+	(101, 201, '2024-02-08 12:30:00', 301, 'Pending', NULL, NULL, NULL, 401),
+	(102, 202, '2024-02-08 12:35:00', 302, 'Preparing', NULL, NULL, NULL, 402),
+	(103, 203, '2024-02-08 12:40:00', 303, 'Out for Delivery', '2024-02-08 13:00:00', NULL, NULL, 403),
+	(104, 204, '2024-02-08 12:45:00', 304, 'Delivered', '2024-02-08 13:10:00', 'Great service!', NULL, 404),
+	(105, 205, '2024-02-08 12:50:00', NULL, 'Cancelled', NULL, NULL, 'Payment failed', 405),
+	(106, 206, '2024-02-08 12:55:00', 305, 'Delivered', '2024-02-08 13:15:00', NULL, NULL, 406),
+	(107, 207, '2024-02-08 13:00:00', 306, 'Pending', NULL, NULL, NULL, 407),
+	(108, 208, '2024-02-08 13:05:00', 307, 'Preparing', NULL, 'Food should be hotter', NULL, 408),
+	(109, 209, '2024-02-08 13:10:00', 308, 'Out for Delivery', '2024-02-08 13:30:00', NULL, NULL, 409),
+	(110, 210, '2024-02-08 13:15:00', 309, 'Delivered', '2024-02-08 13:45:00', 'Loved the food!', NULL, 410);
+	
+- Prompt to display the table data
+	Write a query to display all the data from Orders table.
+	
+Result:
+	SELECT * FROM Orders;
+	
+Note : Dummy table is added to the excel file. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TABLE 2 (Menu Table)
+- Table creation prompt : 
+	Write a simple SQL Query to create Menu table using following specification:
+	Menu Table:
+	menu_item_id 
+	item_name 
+	description 
+	price
+	discount_percentage
+	category
+
+
+Result :
+	CREATE TABLE Menu (
+    menu_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    item_name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    discount_percentage DECIMAL(5,2) DEFAULT 0,
+    category VARCHAR(100) NOT NULL
+	);
+	
+- Prompt for inserting dummy values into the Menu Table:
+	Insert 5 dummy values into the Menu table created above.
+	
+Result :
+	INSERT INTO Menu (item_name, description, price, discount_percentage, category) 
+	VALUES 
+	('Margherita Pizza', 'Classic cheese and tomato pizza', 299.99, 10.00, 'Main Course'),
+	('Spaghetti Carbonara', 'Italian pasta with creamy sauce and bacon', 349.50, 5.00, 'Main Course'),
+	('Caesar Salad', 'Fresh lettuce, croutons, parmesan cheese, and Caesar dressing', 199.00, 0.00, 'Starter'),
+	('Chocolate Lava Cake', 'Warm chocolate cake with molten chocolate center', 249.99, 15.00, 'Dessert'),
+	('Mango Smoothie', 'Refreshing mango smoothie with yogurt and honey', 149.50, 0.00, 'Beverage');
+
+- Prompt to display the table data
+	Write a query to display all the data from Menu table.
+	
+Result:
+	SELECT * FROM Menu;
+	
+Note : Dummy table is added to the excel file. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TABLE 3 (Restaurant Table)
+- Table creation prompt : 
+	Write a simple SQL Query to create Restaurant table using following specification:
+	Restaurant Table:
+	restaurant_id
+	restaurant_name
+	address
+	city
+	state
+	average_rating
+
+
+
+Result :
+	CREATE TABLE Restaurant (
+    restaurant_id INT PRIMARY KEY AUTO_INCREMENT,
+    restaurant_name VARCHAR(255) NOT NULL,
+    address TEXT NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    average_rating DECIMAL(3,2) CHECK (average_rating BETWEEN 0 AND 5)
+	);
+	
+- Prompt for inserting dummy values into the Restaurant Table:
+	Insert 5 dummy values into the Restaurant table created above.
+	
+Result :
+	INSERT INTO Restaurant (restaurant_name, address, city, state, average_rating) 
+	VALUES 
+	('The Food Court', '123 Main Street', 'Mumbai', 'Maharashtra', 4.5),
+	('Spice Delight', '45 Bazaar Road', 'Delhi', 'Delhi', 4.2),
+	('Tandoori Treats', '789 Market Lane', 'Bangalore', 'Karnataka', 4.7),
+	('Ocean Breeze Cafe', '22 Beach Road', 'Chennai', 'Tamil Nadu', 4.3),
+	('Golden Dragon', '67 Chinatown', 'Kolkata', 'West Bengal', 4.6);
+
+
+- Prompt to display the table data
+	Write a query to display all the data from Restaurant table.
+	
+Result:
+	SELECT * FROM Restaurant;
+	
+Note : Dummy table is added to the excel file. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+

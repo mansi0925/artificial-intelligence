@@ -1,151 +1,173 @@
 Step 1 : Create 3 tables mentioned in the Food Panda Case Study Document.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------
-TABLE 1 (Orders Table)
-- Table creation prompt : 
-	Write a SQL Query to create Orders table using following columns:
-	Orders Table:
-	order_id [INT]
-	customer_id [VARCHAR(50)]
-	menu_item_id [VARCHAR(50)]
-	order_timestamp [TIMESTAMO]
-	delivery_partner_id [VARCHAR(50)]
-	order status [VARCHAR(50)]
-	delivery_timestamp [TIMESTAMP]
-	complaint_or_compliment_message [VARCHAR(500)] 
-	Payment_or_cancellation_issue [VARCHAR(500)]
-	restaurant_id [INT]
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+	TABLE 1 (Orders Table)
+	- Table creation prompt : 
+		Write a SQL Query to create Orders table using following columns:
+		Orders Table:
+		order_id [INT]
+		customer_id [VARCHAR(50)]
+		menu_item_id [VARCHAR(50)]
+		order_timestamp [TIMESTAMO]
+		delivery_partner_id [VARCHAR(50)]
+		order status [VARCHAR(50)]
+		delivery_timestamp [TIMESTAMP]
+		complaint_or_compliment_message [VARCHAR(500)] 
+		Payment_or_cancellation_issue [VARCHAR(500)]
+		restaurant_id [INT]
 
-Result :
-	CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
-    customer_id VARCHAR(50),
-    menu_item_id VARCHAR(50),
-    order_timestamp TIMESTAMP,
-    delivery_partner_id INT,
-    `order status` VARCHAR(50),
-    delivery_timestamp TIMESTAMP NULL,
-    complaint_or_compliment_message VARCHAR(255),
-    Payment_or_cancellation_issue VARCHAR(255),
-    restaurant_id INT
-	);
+	Result :
+		CREATE TABLE Orders (
+		order_id INT PRIMARY KEY,
+		customer_id VARCHAR(50),
+		menu_item_id VARCHAR(50),
+		order_timestamp TIMESTAMP,
+		delivery_partner_id INT,
+		`order status` VARCHAR(50),
+		delivery_timestamp TIMESTAMP NULL,
+		complaint_or_compliment_message VARCHAR(255),
+		Payment_or_cancellation_issue VARCHAR(255),
+		restaurant_id INT
+		);
 
+		
+	- Prompt for inserting dummy values into the Orders Table:
+		Refer above table structure and insert 5 dummy values to the Orders table. 
+		
+	Result :
+		INSERT INTO Orders (order_id, customer_id, menu_item_id, order_timestamp, delivery_partner_id, `order status`, delivery_timestamp, complaint_or_compliment_message, Payment_or_cancellation_issue, restaurant_id)
+		VALUES
+		(1, 'C001', 'M101', NOW(), 201, 'Delivered', NOW(), 'Delicious food!', NULL, 1),
+		(2, 'C002', 'M102', NOW(), 202, 'Delivered', NOW(), NULL, NULL, 2),
+		(3, 'C003', 'M103', NOW(), 203, 'Out for Delivery', NULL, NULL, NULL, 3),
+		(4, 'C004', 'M104', NOW(), 204, 'Cancelled', NULL, NULL, 'Payment issue', 4),
+		(5, 'C005', 'M105', NOW(), 205, 'Preparing', NULL, NULL, NULL, 5);
+
+		
+	- Prompt to display the table data
+		Write a query to display all the data from Orders table.
+		
+	Result:
+		SELECT * FROM Orders;
+		
+	Note : Table is added to the excel file. 
+
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+	TABLE 2 (Menu Table)
+	- Table creation prompt : 
+		Refer above table structure and write a SQL query for Menu Table using following columns: 
+	 
+		Menu Table:
+		menu_item_id 
+		item_name 
+		description 
+		price
+		discount_percentage
+		category                 
+
+
+	Result :
+		CREATE TABLE Menu (
+		menu_item_id VARCHAR(50) PRIMARY KEY,
+		item_name VARCHAR(100) ,
+		description VARCHAR(255),
+		price DECIMAL(10,2),
+		discount_percentage DECIMAL(5,2),
+		category VARCHAR(50)
+		);
+		
+	- Prompt for inserting dummy values into the Menu Table:
+		Insert 5 dummy values into the Menu table created above.
+		
+	Result :
+		INSERT INTO Menu (menu_item_id, item_name, description, price, discount_percentage, category)
+		VALUES
+		('M101', 'Paneer Butter Masala', 'Creamy paneer curry with spices', 250.00, 10.00, 'Main Course'),
+		('M102', 'Margherita Pizza', 'Classic cheese pizza with tomato sauce', 350.00, 5.00, 'Pizza'),
+		('M103', 'Chicken Burger', 'Grilled chicken patty with fresh veggies', 180.00, 7.00, 'Fast Food'),
+		('M104', 'California Roll', 'Sushi roll with crab, avocado, and cucumber', 400.00, 12.00, 'Sushi'),
+		('M105', 'Vegan Salad', 'Fresh greens with tofu and vinaigrette', 200.00, 8.00, 'Salads');
+
+
+	- Prompt to display the table data
+		Write a query to display all the data from Menu table.
+		
+	Result:
+		SELECT * FROM Menu;
+		
+	Note : Table is added to the excel file. 
+
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+	TABLE 3 (Restaurant Table)
+	- Table creation prompt : 
+		Write a simple SQL Query to create Restaurant table using following specification:
+		
+		Restaurant Table:
+		restaurant_id
+		restaurant_name
+		address
+		city
+		state
+		average_rating
+
+
+
+	Result :
+		CREATE TABLE Restaurant (
+		restaurant_id INT PRIMARY KEY,
+		restaurant_name VARCHAR(100),
+		address VARCHAR(255),
+		city VARCHAR(50),
+		state VARCHAR(50),
+		average_rating DECIMAL(3,2)
+		);
+
+		
+	- Prompt for inserting dummy values into the Restaurant Table:
+		Insert 5 dummy values into the Restaurant table created above.
+		
+	Result :
+		INSERT INTO Restaurant (restaurant_id, restaurant_name, address, city, state, average_rating)
+		VALUES
+		(1, 'The Spice House', '123 Curry St', 'Mumbai', 'Maharashtra', 4.5),
+		(2, 'Pizza Palace', '456 Cheese Ave', 'Delhi', 'Delhi', 4.2),
+		(3, 'Burger Barn', '789 Grill Rd', 'Bangalore', 'Karnataka', 4.0),
+		(4, 'Sushi Spot', '321 Sashimi Ln', 'Kolkata', 'West Bengal', 4.8),
+		(5, 'Vegan Delight', '654 Plant St', 'Chennai', 'Tamil Nadu', 4.6);
+
+
+
+	- Prompt to display the table data
+		Write a query to display all the data from Restaurant table.
+		
+	Result:
+		SELECT * FROM Restaurant;
+		
+	Note : Dummy table is added to the excel file. 
+
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 2 : Solving the questions given in the case study.
+
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Question 1:
+	Which menu items are the most popular among customers based on the number of orders? Tables: Orders, Menu
+	Analysis Reason: This analysis helps identify the popular menu items that have a high demand among customers. 
+	By understanding the most popular items, the Partner Restaurant can optimize its inventory, ensure the availability of popular dishes, 
+	and focus on improving the quality and presentation of items.
 	
-- Prompt for inserting dummy values into the Orders Table:
-	Refer above table structure and insert 5 dummy values to the Orders table. 
+	- Prompt:
+		Write a query to determine the most popular items among customers based on the number of orders. Display the menu item name and 
+		the total number of orders for each item, in descending order of popularity. 
 	
-Result :
-	INSERT INTO Orders (order_id, customer_id, menu_item_id, order_timestamp, delivery_partner_id, `order status`, delivery_timestamp, complaint_or_compliment_message, Payment_or_cancellation_issue, restaurant_id)
-	VALUES
-	(1, 'C001', 'M101', NOW(), 201, 'Delivered', NOW(), 'Delicious food!', NULL, 1),
-	(2, 'C002', 'M102', NOW(), 202, 'Delivered', NOW(), NULL, NULL, 2),
-	(3, 'C003', 'M103', NOW(), 203, 'Out for Delivery', NULL, NULL, NULL, 3),
-	(4, 'C004', 'M104', NOW(), 204, 'Cancelled', NULL, NULL, 'Payment issue', 4),
-	(5, 'C005', 'M105', NOW(), 205, 'Preparing', NULL, NULL, NULL, 5);
+	- Query:
+		SELECT m.item_name, COUNT(o.menu_item_id) AS total_orders
+		FROM Orders o
+		JOIN Menu m ON o.menu_item_id = m.menu_item_id
+		GROUP BY m.item_name
+		ORDER BY total_orders DESC;
 
+	--------------------------------------------------------------------------------------------------------------------------------------------------
 	
-- Prompt to display the table data
-	Write a query to display all the data from Orders table.
-	
-Result:
-	SELECT * FROM Orders;
-	
-Note : Table is added to the excel file. 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-TABLE 2 (Menu Table)
-- Table creation prompt : 
-	Refer above table structure and write a SQL query for Menu Table using following columns: 
- 
-	Menu Table:
-	menu_item_id 
-	item_name 
-	description 
-	price
-	discount_percentage
-	category                 
-
-
-Result :
-	CREATE TABLE Menu (
-    menu_item_id VARCHAR(50) PRIMARY KEY,
-    item_name VARCHAR(100) ,
-    description VARCHAR(255),
-    price DECIMAL(10,2),
-    discount_percentage DECIMAL(5,2),
-    category VARCHAR(50)
-	);
-	
-- Prompt for inserting dummy values into the Menu Table:
-	Insert 5 dummy values into the Menu table created above.
-	
-Result :
-	INSERT INTO Menu (menu_item_id, item_name, description, price, discount_percentage, category)
-	VALUES
-	('M101', 'Paneer Butter Masala', 'Creamy paneer curry with spices', 250.00, 10.00, 'Main Course'),
-	('M102', 'Margherita Pizza', 'Classic cheese pizza with tomato sauce', 350.00, 5.00, 'Pizza'),
-	('M103', 'Chicken Burger', 'Grilled chicken patty with fresh veggies', 180.00, 7.00, 'Fast Food'),
-	('M104', 'California Roll', 'Sushi roll with crab, avocado, and cucumber', 400.00, 12.00, 'Sushi'),
-	('M105', 'Vegan Salad', 'Fresh greens with tofu and vinaigrette', 200.00, 8.00, 'Salads');
-
-
-- Prompt to display the table data
-	Write a query to display all the data from Menu table.
-	
-Result:
-	SELECT * FROM Menu;
-	
-Note : Table is added to the excel file. 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-TABLE 3 (Restaurant Table)
-- Table creation prompt : 
-	Write a simple SQL Query to create Restaurant table using following specification:
-	
-	Restaurant Table:
-	restaurant_id
-	restaurant_name
-	address
-	city
-	state
-	average_rating
-
-
-
-Result :
-	CREATE TABLE Restaurant (
-    restaurant_id INT PRIMARY KEY,
-    restaurant_name VARCHAR(100),
-    address VARCHAR(255),
-    city VARCHAR(50),
-    state VARCHAR(50),
-    average_rating DECIMAL(3,2)
-	);
-
-	
-- Prompt for inserting dummy values into the Restaurant Table:
-	Insert 5 dummy values into the Restaurant table created above.
-	
-Result :
-	INSERT INTO Restaurant (restaurant_id, restaurant_name, address, city, state, average_rating)
-	VALUES
-	(1, 'The Spice House', '123 Curry St', 'Mumbai', 'Maharashtra', 4.5),
-	(2, 'Pizza Palace', '456 Cheese Ave', 'Delhi', 'Delhi', 4.2),
-	(3, 'Burger Barn', '789 Grill Rd', 'Bangalore', 'Karnataka', 4.0),
-	(4, 'Sushi Spot', '321 Sashimi Ln', 'Kolkata', 'West Bengal', 4.8),
-	(5, 'Vegan Delight', '654 Plant St', 'Chennai', 'Tamil Nadu', 4.6);
-
-
-
-- Prompt to display the table data
-	Write a query to display all the data from Restaurant table.
-	
-Result:
-	SELECT * FROM Restaurant;
-	
-Note : Dummy table is added to the excel file. 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------
-

@@ -193,10 +193,10 @@ Step 2 : Solving the questions given in the case study.
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------
 	Question 3: 
-	What are the peak hours or days when the Partner Restaurant receives the most orders? Tables: Orders, Restaurants
-	Analysis Reason: Analyzing the peak hours or days helps the Partner Restaurant effectively manage its resources, including staffing and inventory.
-	By the busiest periods, they can allocate sufficient staff, streamline operations, and ensure timely order fulfillment to provide a positive 
-	customer experience.
+	How the revenue generated through Foodpanda does vary over time, and are there any seasonal or trend-related patterns? Tables: Orders, Menu
+	Analysis Reason: Tracking revenue variations over time helps the Partner Restaurant identify seasonal or trend-related patterns. 
+	This analysis allows the promotional offers, adjust pricing strategies, and allocate resources efficiently during high-demand 
+	periods, ultimately maximizing revenue generation.
 	
 	- Prompt:
 		Write a SQL query to analyze the revenue generated through FoodPanda over time. 
@@ -212,4 +212,26 @@ Step 2 : Solving the questions given in the case study.
 		GROUP BY month
 		ORDER BY month ASC;
 		
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Question 4: 
+	What is the average delivery time for orders, and are there any delays or areas for improvement? Tables: Orders, Restaurants
+	Analysis Reason: Analyzing delivery times helps the Partner Restaurant assess its efficiency in order processing and delivery. 
+	By identifying any delays for improvement, they can streamline their operations, optimize the delivery process, 
+	and enhance overall customer satisfaction.
+
+
+	
+	- Prompt:
+		Write an SQL query to calculate the average delivery time for the orders. Display he average delivery time in minutes. 
+		Additionally, identify any orders that have a delivery time longer than a specified threshold (e.g. 30 minutes). 
+	
+	- Query:
+		SELECT (SELECT AVG(TIMESTAMPDIFF(MINUTE, order_timestamp, delivery_timestamp)) FROM Orders 
+		WHERE `order status` = 'Delivered') AS avg_delivery_time_minutes,order_id, 
+			TIMESTAMPDIFF(MINUTE, order_timestamp, delivery_timestamp) AS delivery_time_minutes
+		FROM Orders
+		WHERE `order status` = 'Delivered' 
+		AND TIMESTAMPDIFF(MINUTE, order_timestamp, delivery_timestamp) > 30;
+	-------------------------------------------------------------------------------------------------------------------------------------------------
+	
 

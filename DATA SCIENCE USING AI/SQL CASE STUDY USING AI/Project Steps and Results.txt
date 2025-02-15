@@ -145,7 +145,7 @@ Step 1 : Create 3 tables mentioned in the Food Panda Case Study Document.
 	Result:
 		SELECT * FROM Restaurant;
 		
-	Note : Dummy table is added to the excel file. 
+	Note: Table is added to the excel file. 
 
 	--------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -168,6 +168,22 @@ Step 2 : Solving the questions given in the case study.
 		JOIN Menu m ON o.menu_item_id = m.menu_item_id
 		GROUP BY m.item_name
 		ORDER BY total_orders DESC;
-
+		
 	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Question 2: 
+	What are the peak hours or days when the Partner Restaurant receives the most orders? Tables: Orders, Restaurants
+	Analysis Reason: Analyzing the peak hours or days helps the Partner Restaurant effectively manage its resources, including staffing and inventory.
+	By the busiest periods, they can allocate sufficient staff, streamline operations, and ensure timely order fulfillment to provide a positive 
+	customer experience.
 	
+	- Prompt:
+		Write a query to determine the peak hours or days when the Partner Restaurant receives the most orders. 
+		
+	- Query:
+		SELECT DAYNAME(order_timestamp) AS day_of_week,
+		HOUR(order_timestamp) AS order_hour,
+		COUNT(*) AS total_orders
+		FROM Orders
+		GROUP BY day_of_week, order_hour
+		ORDER BY total_orders DESC;
+

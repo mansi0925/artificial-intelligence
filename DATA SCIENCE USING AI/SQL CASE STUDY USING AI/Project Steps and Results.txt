@@ -177,7 +177,9 @@ Step 2 : Solving the questions given in the case study.
 	customer experience.
 	
 	- Prompt:
-		Write a query to determine the peak hours or days when the Partner Restaurant receives the most orders. 
+		Write a SQL query to analyze the revenue generated through FoodPanda over time. 
+		Display the total revenue for each time period (e.g. month, quarter), along with the corresponding time period. 
+		Order the results by time period in ascending order.
 		
 	- Query:
 		SELECT DAYNAME(order_timestamp) AS day_of_week,
@@ -186,4 +188,28 @@ Step 2 : Solving the questions given in the case study.
 		FROM Orders
 		GROUP BY day_of_week, order_hour
 		ORDER BY total_orders DESC;
+
+
+
+	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Question 3: 
+	What are the peak hours or days when the Partner Restaurant receives the most orders? Tables: Orders, Restaurants
+	Analysis Reason: Analyzing the peak hours or days helps the Partner Restaurant effectively manage its resources, including staffing and inventory.
+	By the busiest periods, they can allocate sufficient staff, streamline operations, and ensure timely order fulfillment to provide a positive 
+	customer experience.
+	
+	- Prompt:
+		Write a SQL query to analyze the revenue generated through FoodPanda over time. 
+		Display the total revenue for each time period (e.g. month, quarter), along with the corresponding time period. 
+		Order the results by time period in ascending order.
+		
+	- Query:
+		SELECT DATE_FORMAT(o.order_timestamp, '%Y-%m') AS month,
+		SUM(m.price * (1 - (m.discount_percentage / 100))) AS total_revenue
+		FROM Orders o
+		JOIN Menu m ON o.menu_item_id = m.menu_item_id
+		WHERE o.`order status` = 'Delivered'  -- Only count successful orders
+		GROUP BY month
+		ORDER BY month ASC;
+		
 

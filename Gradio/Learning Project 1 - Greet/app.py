@@ -15,6 +15,7 @@ demo = gr.Interface(
         0, 100, label="Temperature in Fahrenheit")],
     outputs=[gr.Textbox(label="Greeting"), gr.Number(
         label="Temperature in Celsius")],
+    title="Greeting And Temperature App",
     api_name="predict"
 )
 
